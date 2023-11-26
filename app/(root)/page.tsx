@@ -1,9 +1,8 @@
 import { UserButton } from "@clerk/nextjs";
 
-export default function Home() {
+export default function SetupPage() {
   return (
-    <div>
-      <p>Hello Admin Dashboard</p>
+    <div className="p-4">
       <UserButton afterSignOutUrl="/" />
     </div>
   );
