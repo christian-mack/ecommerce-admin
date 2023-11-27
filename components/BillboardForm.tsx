@@ -1,8 +1,8 @@
 "use client";
 
 import * as z from "zod";
-import { set, useForm } from "react-hook-form";
-import { Billboard, Store } from "@prisma/client";
+import { useForm } from "react-hook-form";
+import { Billboard } from "@prisma/client";
 import { Trash } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
@@ -23,8 +23,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "./modals/alertModal";
-import { ApiAlert } from "./ui/apiAlert";
-import { useOrigin } from "@/hooks/useOrigin";
 import ImageUpload from "./ui/imageUpload";
 
 const formSchema = z.object({
@@ -42,7 +40,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -87,7 +84,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard deleted successfully");
     } catch (error) {
       toast.error("Make sure you removed all categories using this billboard.");
@@ -167,7 +164,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };
