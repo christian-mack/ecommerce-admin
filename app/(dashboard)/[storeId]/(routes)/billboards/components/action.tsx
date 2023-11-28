@@ -1,6 +1,6 @@
 "use client";
 
-import { BillboardColumn } from "@/components/Columns";
+import { BillboardColumn } from "./columns";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,13 +8,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "./ui/button";
+import { Button } from "../../../../../../components/ui/button";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
-import { AlertModal } from "./modals/alertModal";
+import { AlertModal } from "../../../../../../components/modals/alertModal";
 
 interface CellActionProps {
   data: BillboardColumn;
